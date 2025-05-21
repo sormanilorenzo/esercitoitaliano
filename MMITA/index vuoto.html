@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marina Militare Italiana RolePlay | Mare, Onore, Patria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        /* Header Sopra */
+        
+        :root {
+            --dark-blue: #00236a;
+            --medium-blue: #003399;
+            --light-blue: #0055b8;
+            --navy: #001f5c;
+            --black: #121212;
+            --dark-gray: #333333;
+            --light-gray: #f0f0f0;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: var(--dark-blue);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .logo h1 {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image/marinamilitare.mp4') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 
+                0 0 10px rgba(0,0,0,0.8),
+                2px 2px 5px rgba(0,0,0,0.5),
+                0 0 20px rgba(255,255,255,0.4);
+            letter-spacing: 2px;
+            font-weight: 700;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        section {
+            padding: 80px 10%;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--dark-blue);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            overflow: hidden; /* Per assicurarsi che il video non crei scrollbar */
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay scuro per leggibilità */
+            z-index: 2;
+        }
+
+        .hero h2, .hero p, .hero .cta-button {
+            position: relative;
+            z-index: 3; /* Valore più alto per assicurarsi che siano sopra l'immagine e l'overlay */
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* footer sotto */
+
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 60px 10% 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #009246 33.3%, #ffffff 33.3%, #ffffff 66.6%, #ce2b37 66.6%); /* Tricolore italiano */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo img {
+            max-height: 180px;
+            max-width: 280px;
+            width: auto;
+            height: auto;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .footer-logo p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--medium-blue);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-documents h3 {
+            position: relative;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .footer-links h3::after, .footer-contact h3::after, .footer-documents h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .footer-links ul, .footer-documents ul {
+            list-style: none;
+        }
+
+        .footer-links ul li, .footer-documents ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a, .footer-documents ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links ul li a i, .footer-documents ul li a i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-links ul li a:hover, .footer-documents ul li a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info p span {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .contact-info p a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .join-now {
+            margin-top: 25px;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .join-button i {
+            margin-right: 8px;
+        }
+
+        .join-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-credentials {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .certifications {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .certifications span {
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .certifications span i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .copyright p {
+            margin-bottom: 10px;
+            color: #a0a0a0;
+        }
+
+        .copyright p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .certifications {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        /* Personalizzazione della scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--light-blue);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
+        }
+        
+        /* Stili per il player musicale */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--dark-blue);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .audio-player.minimized {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            padding: 0;
+            justify-content: center;
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .audio-player.minimized .audio-controls {
+            display: none;
+        }
+        
+        .toggle-player {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--medium-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-player:hover {
+            background-color: var(--gold);
+        }
+        
+        .play-pause, .next-track, .prev-track {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .play-pause:hover, .next-track:hover, .prev-track:hover {
+            color: var(--gold);
+        }
+        
+        .track-info {
+            color: white;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 5px;
+            border-radius: 5px;
+            background: var(--light-gray);
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="Logo Marina Militare Italiana Roleplay">
+            <h1>MARINA MILITARE IRP</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#departments">Flotte</a></li>
+                <li><a href="#operations">Missioni</a></li>
+                <li><a href="#gallery">Galleria</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="image/marinamilitare.mp4" type="video/mp4">
+            <!-- Fallback per browser che non supportano video -->
+            Il tuo browser non supporta i video HTML5.
+        </video>
+        <h2>Marina Militare: Mare, Onore, Patria</h2>
+        <p>Unisciti a una forza d’élite forgiata da dovere e onore. Difendiamo il mare, proteggiamo la Patria e viviamo secondo i valori della Marina Militare.</p>
+        <a href="#" class="cta-button">Unisciti Ora</a>
+    </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <!-- Colonna Logo e Descrizione -->
+                <div class="footer-logo">
+                    <img src="image/mmscritta.png" alt="Logo Marina Militare Italiana Roleplay">
+                    <p>Il server roleplay della Marina Militare Italiana è una comunità dedicata alla simulazione realistica dell'esperienza navale. Uniamoci nel nome dei valori di onore, tradizione marinaresca e disciplina per servire con fedeltà la Patria.</p>
+                    <div class="social-icons">
+                        <a href="#" title="Discord" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Twitter" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+        
+                <!-- Colonna Link Utili -->
+                <div class="footer-links">
+                    <h3>Link Utili</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+                        <li><a href="#about"><i class="fa-solid fa-users"></i> Chi Siamo</a></li>
+                        <li><a href="#departments"><i class="fa-solid fa-anchor"></i> Flotte</a></li>
+                        <li><a href="#operations"><i class="fa-solid fa-ship"></i> Missioni</a></li>
+                        <li><a href="#gallery"><i class="fa-solid fa-images"></i> Galleria</a></li>
+                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScymWuldn9yvJWk7ogMQ3NqDv9XDePvyKB_7DtLMewXo0v8zA/viewform"><i class="fa-solid fa-clipboard-list"></i> Bandi di Arruolamento</a></li>
+                        <li><a href="https://docs.google.com/document/d/1Z3_Ow9_Vs7IBGzFsqHDysPZsVTFxmumNfbcAv-IVpo8/edit?tab=t.0"><i class="fa-solid fa-book"></i> Manuali di Addestramento</a></li>
+                        <li><a href="#"><i class="fa-solid fa-medal"></i> Decorazioni e Riconoscimenti</a></li>
+                        <li><a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Colonna Documenti -->
+                <div class="footer-documents">
+                    <h3>Documenti Ufficiali</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-file-alt"></i> Regolamento Generale</a></li>
+                        <li><a href="#"><i class="fa-solid fa-file-contract"></i> Codice di Condotta</a></li>
+                        <li><a href="#"><i class="fa-solid fa-file-medical"></i> Procedure Operative Standard</a></li>
+                        <li><a href="#"><i class="fa-solid fa-calendar-alt"></i> Calendario Addestrativo</a></li>
+                        <li><a href="#"><i class="fa-solid fa-shield-alt"></i> Normative di Sicurezza Navale</a></li>
+                        <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Percorsi Formativi</a></li>
+                        <li><a href="#"><i class="fa-solid fa-history"></i> Storia della Marina</a></li>
+                        <li><a href="#"><i class="fa-solid fa-newspaper"></i> Bollettino Informativo</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Colonna Contatti -->
+                <div class="footer-contact">
+                    <h3>Contattaci</h3>
+                    <div class="contact-info">
+                        <p><i class="fa-brands fa-discord"></i> <span>Discord:</span> <a href="https://discord.gg/marinamilitareirp" target="_blank">MarinaMilitareIRP</a></p>
+                        <p><i class="fa-solid fa-envelope"></i> <span>Email:</span> <a href="mailto:info@marinamilitareirp.it">info@marinamilitareirp.it</a></p>
+                        <p><i class="fa-solid fa-clock"></i> <span>Orari Server:</span> 14:00 - 00:00 CET</p>
+                        <p><i class="fa-solid fa-calendar-check"></i> <span>Addestramenti:</span> Martedì, Giovedì, Sabato</p>
+                        <p><i class="fa-solid fa-bullhorn"></i> <span>Reclutamenti:</span> Lunedì e Venerdì</p>
+                    </div>
+                    <div class="join-now">
+                        <a href="#" class="join-button"><i class="fa-solid fa-user-plus"></i> Unisciti Ora</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Copyright -->
+            <div class="copyright">
+                <p>&copy; 2025 Marina Militare Italiana Roleplay Server. Tutti i diritti riservati.</p>
+                <p><small>Questo server non è affiliato con la Marina Militare Italiana ufficiale. Creato a scopo di intrattenimento e roleplay.</small></p>
+            </div>
+        </footer>
+
+        <div class="audio-player minimized">
+            <button class="toggle-player" id="togglePlayer">
+                <i class="fas fa-music"></i>
+            </button>
+            <div class="audio-controls">
+                <button class="prev-track">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="play-pause">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="next-track">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+                <div class="track-info">Brano Marina Militare</div>
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" class="volume-slider" min="0" max="100" value="50">
+                </div>
+            </div>
+            <audio id="audioPlayer" style="display: none;"></audio>
+        </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tracce audio disponibili (sostituisci con i percorsi reali dei tuoi file audio)
+            const tracks = [
+                {
+                    src: "music/marciaordinanza.mp3",
+                    title: "Marcia d'Ordinanza della Marina Militare"
+                },
+                {
+                    src: "music/ritirata.mp3",
+                    title: "La Ritirata"
+                },
+                {
+                    src: "music/sanmarco.mp3",
+                    title: "Inno al San Marco"
+                }
+            ];
+            
+            // Elementi del DOM
+            const audioPlayer = document.getElementById('audioPlayer');
+            const playPauseBtn = document.querySelector('.play-pause');
+            const nextBtn = document.querySelector('.next-track');
+            const prevBtn = document.querySelector('.prev-track');
+            const volumeSlider = document.querySelector('.volume-slider');
+            const trackInfo = document.querySelector('.track-info');
+            const togglePlayerBtn = document.getElementById('togglePlayer');
+            const audioPlayerContainer = document.querySelector('.audio-player');
+            
+            let currentTrackIndex = Math.floor(Math.random() * tracks.length); // Scelta casuale iniziale
+            let isPlaying = false;
+            
+            // Imposta la traccia iniziale
+            function setTrack(index) {
+                currentTrackIndex = index;
+                audioPlayer.src = tracks[currentTrackIndex].src;
+                trackInfo.textContent = tracks[currentTrackIndex].title;
+                
+                // Autoplay
+                if (isPlaying) {
+                    audioPlayer.play();
+                }
+            }
+            
+            // Inizializza con una traccia casuale
+            setTrack(currentTrackIndex);
+            
+            // Avvia la riproduzione automatica
+            function autoplayAudio() {
+                audioPlayer.play()
+                    .then(() => {
+                        isPlaying = true;
+                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    })
+                    .catch(error => {
+                        console.log("Autoplay prevented: ", error);
+                        // L'autoplay potrebbe essere bloccato dal browser
+                    });
+            }
+            
+            // Avvia l'autoplay dopo un breve ritardo per garantire il caricamento della pagina
+            setTimeout(autoplayAudio, 1000);
+            
+            // Gestione evento play/pause
+            playPauseBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    audioPlayer.pause();
+                    isPlaying = false;
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    audioPlayer.play();
+                    isPlaying = true;
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+            });
+            
+            // Gestione evento traccia successiva
+            nextBtn.addEventListener('click', function() {
+                let nextIndex = (currentTrackIndex + 1) % tracks.length;
+                setTrack(nextIndex);
+            });
+            
+            // Gestione evento traccia precedente
+            prevBtn.addEventListener('click', function() {
+                let prevIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+                setTrack(prevIndex);
+            });
+            
+            // Gestione volume
+            volumeSlider.addEventListener('input', function() {
+                audioPlayer.volume = this.value / 100;
+            });
+            
+            // Quando una traccia finisce, passa automaticamente alla successiva
+            audioPlayer.addEventListener('ended', function() {
+                let nextIndex = (currentTrackIndex + 1) % tracks.length;
+                setTrack(nextIndex);
+            });
+            
+            // Toggle miniaturizzazione del player
+            togglePlayerBtn.addEventListener('click', function() {
+                audioPlayerContainer.classList.toggle('minimized');
+            });
+        });
+    </script>
+</body>
+</html>

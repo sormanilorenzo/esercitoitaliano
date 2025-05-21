@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Completa alle Aviotruppe e al Paracadutismo Militare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        /* Header Sopra */
+
+        :root {
+            --primary-color: #1d3557;
+            --secondary-color: #457b9d;
+            --accent-color: #e63946;
+            --light-color: #f1faee;
+            --text-color: #333;
+            --border-color: #ddd;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --dark-green: #1a3a1a;
+            --medium-green: #2d5a2d;
+            --light-green: #3c6e3c;
+            --black: #121212;
+            --dark-gray: #333333;
+            --light-gray: #f0f0f0;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: var(--dark-green);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .logo h1 {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1600/900') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        section {
+            padding: 80px 10%;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            overflow: hidden; /* Per assicurarsi che l'immagine non crei scrollbar */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/parafolgore.jpg') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay scuro per leggibilità */
+            z-index: 2;
+        }
+
+        .hero h2, .hero p, .hero .cta-button {
+            position: relative;
+            z-index: 3; /* Valore più alto per assicurarsi che siano sopra l'immagine e l'overlay */
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: #f5f5f5;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            text-align: center; /* Centra il contenuto */
+        }
+
+        .navbar a {
+            float: none; /* Rimuove il float left */
+            display: inline-block; /* Cambia da block a inline-block */
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .navbar a:hover {
+            background-color: #a8dadc;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: var(--secondary-color); /* Cambia il gradiente con un colore singolo */
+            border-radius: 2px;
+        }
+
+        h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--secondary-color); /* Cambia il gradiente con un colore singolo */
+            border-radius: 2px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+        
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 30px;
+            background-image: linear-gradient(to right, #1d3557, #2a4b76);
+        }
+        
+        .img-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .img-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .img-container img:hover {
+            transform: scale(1.02);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #e9ecef;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .quote {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: "\"";
+            font-size: 4rem;
+            position: absolute;
+            left: 10px;
+            top: -15px;
+            color: #ddd;
+            font-family: Georgia, serif;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        ul li, ol li {
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: var(--secondary-color);
+        }
+        
+        /* Animazione al caricamento della pagina */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+        
+        /* Layout responsive */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .navbar a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            
+            h2::after, h3::after {
+                width: 60px;
+            }
+        }
+
+                /* footer sotto */
+
+                footer {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 60px 10% 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #009246 33.3%, #ffffff 33.3%, #ffffff 66.6%, #ce2b37 66.6%); /* Tricolore italiano */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            width: 165px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--medium-green);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-documents h3 {
+            position: relative;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .footer-links h3::after,
+        .footer-contact h3::after,
+        .footer-documents h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .footer-links ul, .footer-documents ul {
+            list-style: none;
+        }
+
+        .footer-links ul li, .footer-documents ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a, .footer-documents ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links ul li a i, .footer-documents ul li a i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-links ul li a:hover, .footer-documents ul li a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info p span {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .contact-info p a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .join-now {
+            margin-top: 25px;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .join-button i {
+            margin-right: 8px;
+        }
+
+        .join-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-credentials {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .certifications {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .certifications span {
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .certifications span i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .copyright p {
+            margin-bottom: 10px;
+            color: #a0a0a0;
+        }
+
+        .copyright p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .certifications {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="image/logo.png" alt="Logo Esercito Italiano Roleplay">
+                <h1>ESERCITO ITALIANO IRP</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#introduzione">Introduzione</a></li>
+                    <li><a href="#storia">Storia</a></li>
+                    <li><a href="#sicurezza">Norme di Sicurezza</a></li>
+                    <li><a href="#procedure">Procedure Operative</a></li>
+                    <li><a href="#brevetti">Brevetti e Qualifiche</a></li>
+                    <li><a href="#equipaggiamento">Mezzi ed Equipaggiamento</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+    <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h2>Esercito Italiano: Paracadutisti</h2>
+            <div class="hero-image">
+                <img src="image/nessuna.jpg" alt="Soldati dell'Esercito Italiano">
+            </div>
+            <p>Dal cielo, per la Patria</p>
+            <a href="#" class="cta-button">Unisciti Ora</a>
+        </section>
+    
+    <div class="container">
+        <div id="introduzione" class="section">
+            <h2>Introduzione al Paracadutismo Militare e alle Aviotruppe</h2>
+            <p>Il paracadutismo militare rappresenta una componente fondamentale delle moderne forze armate, consentendo il rapido dispiegamento di truppe in zone operative anche difficilmente raggiungibili con mezzi convenzionali. Le aviotruppe sono unità specializzate addestrate per operazioni di inserzione aerea attraverso il lancio con paracadute da aeromobili.</p>
+            
+            <h3>Definizione e Ruolo delle Aviotruppe</h3>
+            <p>Le aviotruppe sono forze di fanteria specializzate nel combattimento dopo l'inserzione mediante paracadute. I loro compiti principali includono:</p>
+            <ul>
+                <li>Operazioni di infiltrazione dietro le linee nemiche</li>
+                <li>Conquista e mantenimento di teste di ponte aeree</li>
+                <li>Operazioni di ricognizione in profondità</li>
+                <li>Raid su obiettivi strategici</li>
+                <li>Supporto a operazioni speciali</li>
+            </ul>
+            
+            <div class="quote">
+                "Dal cielo, per la Patria" - Motto della Brigata Paracadutisti "Folgore"
+            </div>
+        </div>
+        
+        <div id="storia" class="section">
+            <h2>Storia e Sviluppo del Paracadutismo Militare</h2>
+            <p>Il concetto di truppe aviotrasportate nacque durante la Prima Guerra Mondiale, ma fu sviluppato e impiegato su larga scala nella Seconda Guerra Mondiale.</p>
+            
+            <h3>Origini e Prime Applicazioni</h3>
+            <p>I primi esperimenti di utilizzo militare del paracadute risalgono alla Prima Guerra Mondiale, principalmente per il salvataggio di equipaggi di aeromobili. L'idea di trasportare truppe da combattimento per via aerea fu sviluppata negli anni '20 e '30.</p>
+            
+            <h3>Seconda Guerra Mondiale</h3>
+            <p>Durante questo conflitto, le operazioni aviotrasportate raggiunsero la piena maturità operativa. Le principali potenze militari formarono divisioni di paracadutisti che parteciparono a importanti operazioni:</p>
+            <ul>
+                <li>Operazione Market Garden (Alleati)</li>
+                <li>Operazione Overlord - sbarco in Normandia (Alleati)</li>
+                <li>Battaglia di Creta (Germania)</li>
+                <li>El Alamein - resistenza della "Folgore" (Italia)</li>
+            </ul>
+            
+            <h3>Evoluzione Post-Bellica</h3>
+            <p>Dopo la Seconda Guerra Mondiale, le aviotruppe continuarono a evolversi, incorporando nuove tecnologie, tattiche e metodi di inserzione. Le operazioni aviotrasportate sono state utilizzate in numerosi conflitti, dalla Guerra di Corea ai più recenti scenari operativi in Medio Oriente e Africa.</p>
+        </div>
+        
+        <div id="sicurezza" class="section">
+            <h2>Norme di Sicurezza per Operazioni con Paracadutisti</h2>
+            <p>La sicurezza è un aspetto fondamentale nelle operazioni di paracadutismo militare. Le procedure di sicurezza sono rigorosamente codificate e applicate in ogni fase dell'operazione.</p>
+            
+            <h3>Fase Pre-lancio</h3>
+            <ul>
+                <li><strong>Controllo dell'equipaggiamento</strong>: Ispezione completa del paracadute principale e di riserva prima dell'imbarco</li>
+                <li><strong>Briefing di sicurezza</strong>: Istruzioni dettagliate sulla missione, condizioni meteorologiche e procedure d'emergenza</li>
+                <li><strong>Controlli incrociati</strong>: Verifica reciproca dell'equipaggiamento tra paracadutisti ("buddy check")</li>
+                <li><strong>Valutazione meteorologica</strong>: Analisi delle condizioni del vento, visibilità e altri fattori atmosferici</li>
+            </ul>
+            
+            <h3>Durante il Volo</h3>
+            <ul>
+                <li><strong>Posizione corretta</strong>: Mantenimento della postura appropriata durante il volo</li>
+                <li><strong>Comunicazione chiara</strong>: Utilizzo di segnali standardizzati tra equipaggio e paracadutisti</li>
+                <li><strong>Hook-up</strong>: Aggancio corretto della fune di vincolo al cavo statico dell'aeromobile</li>
+                <li><strong>Controllo finale</strong>: Ultimo controllo dell'equipaggiamento prima dell'uscita</li>
+            </ul>
+            
+            <h3>Fase di Lancio e Discesa</h3>
+            <ul>
+                <li><strong>Uscita corretta</strong>: Tecnica standardizzata per abbandonare l'aeromobile</li>
+                <li><strong>Conteggio</strong>: Controllo del tempo per verificare l'apertura del paracadute</li>
+                <li><strong>Controllo della calotta</strong>: Verifica dell'apertura completa e corretta del paracadute</li>
+                <li><strong>Procedure d'emergenza</strong>: Azioni immediate in caso di malfunzionamento</li>
+                <li><strong>Evitamento collisioni</strong>: Tecniche per evitare altri paracadutisti durante la discesa</li>
+            </ul>
+            
+            <h3>Fase di Atterraggio</h3>
+            <ul>
+                <li><strong>Posizione PLF</strong> (Parachute Landing Fall): Tecnica di atterraggio con rotolamento per assorbire l'impatto</li>
+                <li><strong>Valutazione del terreno</strong>: Identificazione di ostacoli e scelta della zona di atterraggio</li>
+                <li><strong>Procedure dopo l'atterraggio</strong>: Raccolta rapida del paracadute e movimento verso il punto di raggruppamento</li>
+            </ul>
+            
+            <h3>Condizioni Limite per le Operazioni</h3>
+            <table>
+                <tr>
+                    <th>Parametro</th>
+                    <th>Limite operativo standard</th>
+                    <th>Limite operativo per forze speciali</th>
+                </tr>
+                <tr>
+                    <td>Velocità del vento</td>
+                    <td>Max 13 nodi (24 km/h)</td>
+                    <td>Max 18 nodi (33 km/h)</td>
+                </tr>
+                <tr>
+                    <td>Visibilità minima</td>
+                    <td>1.5 km</td>
+                    <td>800 m</td>
+                </tr>
+                <tr>
+                    <td>Altitudine minima</td>
+                    <td>400 m AGL</td>
+                    <td>250 m AGL</td>
+                </tr>
+                <tr>
+                    <td>Precipitazioni</td>
+                    <td>Assenti o leggere</td>
+                    <td>Moderate (con limitazioni)</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="procedure" class="section">
+            <h2>Procedure Operative e Tattiche in Ambiente Aereo</h2>
+            
+            <h3>Tipologie di Lancio</h3>
+            <p>Le operazioni di paracadutismo militare prevedono diverse modalità di lancio in base agli obiettivi della missione:</p>
+            
+            <h4>Lancio a Bassa Quota (LCLA - Low Level Static Line)</h4>
+            <ul>
+                <li>Altitudine: 180-250 metri</li>
+                <li>Apertura automatica tramite fune di vincolo</li>
+                <li>Minimizza il tempo di esposizione durante la discesa</li>
+                <li>Ideale per inserzione rapida di grandi unità</li>
+                <li>Limitata dispersione sul terreno</li>
+            </ul>
+            
+            <h4>Lancio ad Alta Quota (HALO - High Altitude Low Opening)</h4>
+            <ul>
+                <li>Altitudine di lancio: 8.000-10.000 metri</li>
+                <li>Apertura del paracadute a bassa quota (circa 1.000 metri)</li>
+                <li>Consente inserzioni clandestine a grande distanza dal punto di lancio</li>
+                <li>Richiede equipaggiamento per ossigeno e protezione dalle basse temperature</li>
+                <li>Tipicamente utilizzato da forze speciali</li>
+            </ul>
+            
+            <h4>Lancio ad Alta Quota con Apertura ad Alta Quota (HAHO - High Altitude High Opening)</h4>
+            <ul>
+                <li>Altitudine di lancio: 8.000-10.000 metri</li>
+                <li>Apertura immediata del paracadute dopo il lancio</li>
+                <li>Consente navigazione aerea per lunghe distanze (fino a 40+ km)</li>
+                <li>Utilizzato per infiltrazioni in profondità in territorio nemico</li>
+                <li>Richiede paracadute plananti avanzati e sistemi di navigazione</li>
+            </ul>
+            
+            <h3>Fasi Operative di un'Operazione Aviotrasportata</h3>
+            
+            <h4>1. Pianificazione</h4>
+            <ul>
+                <li>Analisi dell'obiettivo e della zona di lancio (DZ - Drop Zone)</li>
+                <li>Studio delle condizioni meteorologiche</li>
+                <li>Determinazione del percorso di volo e altitudine</li>
+                <li>Coordinamento con supporto aereo e forze di terra</li>
+                <li>Pianificazione delle comunicazioni e procedure di emergenza</li>
+            </ul>
+            
+            <h4>2. Preparazione</h4>
+            <ul>
+                <li>Briefing dettagliato della missione</li>
+                <li>Equipaggiamento e armamento specifico per la missione</li>
+                <li>Ispezione e controllo di paracaduti ed equipaggiamento</li>
+                <li>Prove a terra delle procedure di lancio</li>
+                <li>Imbarco sull'aeromobile secondo ordine prestabilito</li>
+            </ul>
+            
+            <h4>3. Inserzione</h4>
+            <ul>
+                <li>Avvicinamento alla DZ secondo rotta pianificata</li>
+                <li>Segnali pre-lancio (luci o comandi vocali)</li>
+                <li>Lancio in sequenza o simultaneo</li>
+                <li>Apertura dei paracadute (automatica o manuale)</li>
+                <li>Pilotaggio verso la zona di atterraggio designata</li>
+            </ul>
+            
+            <h4>4. Azione sul terreno</h4>
+            <ul>
+                <li>Raccolta rapida dell'equipaggiamento dopo l'atterraggio</li>
+                <li>Raggruppamento al punto di raccolta prestabilito (RV - Rendezvous Point)</li>
+                <li>Verifica dell'organico e dell'equipaggiamento</li>
+                <li>Esecuzione della missione secondo il piano operativo</li>
+                <li>Comunicazione con il comando e altre forze</li>
+            </ul>
+            
+            <h3>Formazioni Tattiche in Aria</h3>
+            <p>Le formazioni di paracadutisti durante il lancio e la discesa sono pianificate per massimizzare la sicurezza e l'efficacia operativa:</p>
+            <ul>
+                <li><strong>Stick</strong>: Lancio in sequenza dalla stessa porta dell'aeromobile</li>
+                <li><strong>Formazione a diamante</strong>: Configurazione a quattro paracadutisti per controllare aree più ampie</li>
+                <li><strong>Formazione a V</strong>: Permette controllo visivo reciproco durante la discesa</li>
+                <li><strong>Formazione echelon</strong>: Schieramento sfalsato per massimizzare la copertura</li>
+            </ul>
+        </div>
+        
+        <div id="brevetti" class="section">
+            <h2>Brevetti e Qualifiche Specialistiche</h2>
+            <p>Il percorso di formazione e specializzazione di un paracadutista militare prevede il conseguimento di diversi brevetti e qualifiche che attestano competenze specifiche.</p>
+            
+            <h3>Brevetto di Paracadutista Militare Base</h3>
+            <ul>
+                <li><strong>Requisiti</strong>: Superamento corso base di paracadutismo militare (durata tipica: 3-4 settimane)</li>
+                <li><strong>Competenze acquisite</strong>: Tecniche di lancio vincolato, manovre in aria, atterraggio, operazioni basiche post-atterraggio</li>
+                <li><strong>Prove minime</strong>: 5-7 lanci vincolati diurni in condizioni standard</li>
+                <li><strong>Validità</strong>: Mantenimento mediante numero minimo di lanci annuali (generalmente 4-6)</li>
+            </ul>
+            
+            <h3>Brevetto di Paracadutista Militare Avanzato</h3>
+            <ul>
+                <li><strong>Requisiti</strong>: Brevetto base + corso avanzato (2-3 settimane) + esperienza minima</li>
+                <li><strong>Competenze acquisite</strong>: Lanci notturni, con equipaggiamento completo, in condizioni meteorologiche critiche</li>
+                <li><strong>Prove minime</strong>: 10+ lanci in diverse configurazioni, inclusi notturni e con equipaggiamento</li>
+            </ul>
+            
+            <h3>Qualifica di Istruttore di Paracadutismo</h3>
+            <ul>
+                <li><strong>Requisiti</strong>: Brevetto avanzato + corso istruttori (4-8 settimane) + esperienza significativa (50+ lanci)</li>
+                <li><strong>Competenze acquisite</strong>: Didattica, valutazione allievi, gestione emergenze, supervisione operazioni di lancio</li>
+                <li><strong>Funzioni</strong>: Formazione nuovi paracadutisti, supervisione esercitazioni, controllo sicurezza</li>
+            </ul>
+            
+            <h3>Qualifica HALO/HAHO (High Altitude)</h3>
+            <ul>
+                <li><strong>Requisiti</strong>: Brevetto avanzato + corso specialistico (3-6 settimane) + selezione rigorosa</li>
+                <li><strong>Competenze acquisite</strong>: Tecniche di caduta libera militare, navigazione aerea, utilizzo equipaggiamento ossigeno e protezione termica</li>
+                <li><strong>Tipicamente riservato a</strong>: Forze speciali, ricognitori, team di infiltrazione profonda</li>
+            </ul>
+            
+            <h3>Qualifica di Direttore di Lancio (DL)</h3>
+            <ul>
+                <li><strong>Requisiti</strong>: Esperienza come paracadutista (30+ lanci) + corso specifico</li>
+                <li><strong>Competenze acquisite</strong>: Valutazione condizioni di lancio, coordinamento con equipaggio aeromobile, supervisione sicurezza</li>
+                <li><strong>Responsabilità</strong>: Autorizzazione finale al lancio, coordinamento della sequenza di lancio</li>
+            </ul>
+            
+            <h3>Altre Qualifiche Specialistiche</h3>
+            <table>
+                <tr>
+                    <th>Qualifica</th>
+                    <th>Descrizione</th>
+                    <th>Requisiti principali</th>
+                </tr>
+                <tr>
+                    <td>Ripiegatore paracadute</td>
+                    <td>Specialista nella manutenzione e ripiegatura dei paracaduti</td>
+                    <td>Corso tecnico specialistico (8-12 settimane)</td>
+                </tr>
+                <tr>
+                    <td>Pathfinder</td>
+                    <td>Specialista nell'identificazione e preparazione zone di lancio</td>
+                    <td>Brevetto avanzato + corso pathfinder</td>
+                </tr>
+                <tr>
+                    <td>Jumpmaster</td>
+                    <td>Responsabile della condotta dei lanci a bordo dell'aeromobile</td>
+                    <td>Esperienza significativa + corso specifico</td>
+                </tr>
+                <tr>
+                    <td>Tandem Master</td>
+                    <td>Abilitato ai lanci in tandem con personale non qualificato</td>
+                    <td>Esperienza elevata (100+ lanci) + corso specifico</td>
+                </tr>
+            </table>
+            
+            <h3>Sistema di Riconoscimento Internazionale</h3>
+            <p>Esistono accordi internazionali (principalmente in ambito NATO) per il riconoscimento reciproco dei brevetti di paracadutismo militare. Il "NATO Military Parachutist Badge" è riconosciuto in tutti i paesi dell'Alleanza e prevede tre livelli di qualificazione:</p>
+            <ul>
+                <li><strong>Basic</strong>: Minimo 5 lanci vincolati</li>
+                <li><strong>Qualified</strong>: Minimo 20 lanci, inclusi notturni e con equipaggiamento</li>
+                <li><strong>Master</strong>: Minimo 50 lanci con esperienza in varie condizioni operative</li>
+            </ul>
+        </div>
+        
+        <div id="equipaggiamento" class="section">
+            <h2>Conoscenza dei Mezzi e dell'Equipaggiamento delle Aviotruppe</h2>
+            
+            <h3>Paracaduti Militari</h3>
+            
+            <h4>Paracadute a Calotta Emisferica (T-10, MC1-1C)</h4>
+            <ul>
+                <li><strong>Caratteristiche</strong>: Apertura vincolata, minima manovrabilità, alta affidabilità</li>
+                <li><strong>Diametro calotta</strong>: 8,5-10 metri</li>
+                <li><strong>Velocità di discesa</strong>: 4-6 m/s</li>
+                <li><strong>Peso trasportabile</strong>: Fino a 160 kg (operatore + equipaggiamento)</li>
+                <li><strong>Utilizzo principale</strong>: Lanci di massa con personale a bassa esperienza</li>
+            </ul>
+            
+            <h4>Paracadute Plananti Militari (MC-4, MC-5, T-11)</h4>
+            <ul>
+                <li><strong>Caratteristiche</strong>: Elevata manovrabilità, controllo direzionale, maggiore efficienza</li>
+                <li><strong>Superficie alare</strong>: 28-40 mq</li>
+                <li><strong>Rapporto di planata</strong>: 2,5:1 – 3:1</li>
+                <li><strong>Velocità di avanzamento</strong>: 20-40 km/h</li>
+                <li><strong>Utilizzo principale</strong>: Operazioni speciali, inserzioni precise, HALO/HAHO</li>
+            </ul>
+            
+            <h4>Paracadute di Riserva</h4>
+            <ul>
+                <li><strong>Caratteristiche</strong>: Rapida apertura, semplicità d'uso in emergenza</li>
+                <li><strong>Attivazione</strong>: Manuale o tramite dispositivo automatico di apertura (AAD)</li>
+                <li><strong>Posizionamento</strong>: Frontale o posteriore a seconda del sistema</li>
+            </ul>
+            
+            <h3>Aeromobili per il Lancio</h3>
+            <table>
+                <tr>
+                    <th>Aeromobile</th>
+                    <th>Capacità (paracadutisti)</th>
+                    <th>Caratteristiche principali</th>
+                </tr>
+                <tr>
+                    <td>C-130 Hercules</td>
+                    <td>64-92</td>
+                    <td>Versatile, può operare da piste semi-preparate, uscita laterale e posteriore</td>
+                </tr>
+                <tr>
+                    <td>C-17 Globemaster</td>
+                    <td>102-134</td>
+                    <td>Grande capacità, lungo raggio, adatto per lanci di massa</td>
+                </tr>
+                <tr>
+                    <td>C-27J Spartan</td>
+                    <td>34-46</td>
+                    <td>Medio raggio, ottimo per operazioni tattiche</td>
+                </tr>
+                <tr>
+                    <td>CH-47 Chinook</td>
+                    <td>24-33</td>
+                    <td>Elicottero, ideale per inserzioni a bassa quota</td>
+                </tr>
+            </table>
+            
+            <h3>Equipaggiamento Personale</h3>
+            
+            <h4>Equipaggiamento Base per il Lancio</h4>
+            <ul>
+                <li><strong>Tuta da lancio</strong>: Resistente all'abrasione, con rinforzi e tasche multiple</li>
+                <li><strong>Casco</strong>: Protettivo, con possibilità di montaggio NVG per operazioni notturne</li>
+                <li><strong>Guanti</strong>: Protezione e sensibilità per operare equipaggiamenti</li>
+                <li><strong>Scarponi</strong>: Rinforzo alla caviglia per assorbire impatti</li>
+                <li><strong>Altimetro da polso</strong>: Per monitorare la quota durante la discesa</li>
+                <li><strong>Coltello da lancio</strong>: Per emergenze (taglio funi impigliate)</li>
+            </ul>
+            
+            <h4>Equipaggiamento per Lanci HALO/HAHO</h4>
+            <ul>
+                <li><strong>Sistema di ossigeno</strong>: Bombole e maschera per respirazione ad alta quota</li>
+                <li><strong>Abbigliamento termico</strong>: Protezione dalle temperature estreme (-50°C e oltre)</li>
+                <li><strong>Strumentazione avanzata</strong>: GPS, computer di navigazione, bussola</li>
+                <li><strong>Sistema di comunicazione</strong>: Radio ad alta frequenza compatibili con NVG e caschi</li>
+            </ul>
+            
+            <h4>Sistemi di Contenimento Equipaggiamento</h4>
+            <ul>
+                <li><strong>Container ventrale</strong>: Per trasporto di equipaggiamento leggero (15-25 kg)</li>
+                <li><strong>Container laterale</strong>: Per armamento individuale</li>
+                <li><strong>ATPS</strong> (Advanced Tactical Parachute System): Integrazione di sistemi modulari</li>
+            </ul>
+            
+            <h3>Equipaggiamento Collettivo</h3>
+            
+            <h4>Sistemi per Aviolancio Materiali</h4>
+            <ul>
+                <li><strong>LCADS</strong> (Low Cost Aerial Delivery System): Per carichi leggeri fino a 1000 kg</li>
+                <li><strong>CDS</strong> (Container Delivery System): Per materiali medi (fino a 2500 kg)</li>
+                <li><strong>JPADS</strong> (Joint Precision Airdrop System): Sistema guidato GPS per consegne precise</li>
+                <li><strong>Piattaforme pesanti</strong>: Per veicoli e armamenti pesanti (fino a 18.000 kg)</li>
+            </ul>
+            
+            <h4>Veicoli Aviotrasportati</h4>
+            <ul>
+                <li><strong>Veicoli leggeri tattici</strong>: Peso ridotto, configurabili per diverse missioni</li>
+                <li><strong>Motocicli tattici</strong>: Per ricognizione rapida dopo il lancio</li>
+                <li><strong>Veicoli blindati leggeri</strong>: Versioni specifiche per aviotrasporto</li>
+            </ul>
+            
+            <h3>Manutenzione dell'Equipaggiamento</h3>
+            <p>La manutenzione dell'equipaggiamento di paracadutismo militare segue rigidi protocolli:</p>
+            <ul>
+                <li><strong>Ispezione pre-uso</strong>: Controllo completo prima di ogni lancio</li>
+                <li><strong>Ispezione periodica</strong>: Ogni 30-90 giorni a seconda dell'equipaggiamento</li>
+                <li><strong>Ripiegatura paracaduti</strong>: Ogni 120 giorni anche se non utilizzati</li>
+                <li><strong>Ciclo di vita</strong>: I paracaduti hanno tipicamente vita utile di 12-15 anni o 250-300 lanci</li>
+                <li><strong>Documentazione</strong>: Registro dettagliato di ogni lancio e manutenzione</li>
+                <li><strong>Personale autorizzato</strong>: Solo ripiegatori certificati possono effettuare manutenzione sui paracaduti</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Addestramento e Formazione delle Aviotruppe</h2>
+            
+            <h3>Fasi dell'Addestramento Base</h3>
+            <p>Il percorso formativo di un paracadutista militare è strutturato in fasi progressive:</p>
+            
+            <h4>1. Selezione Iniziale</h4>
+            <ul>
+                <li>Test fisici rigorosi: resistenza, forza, coordinazione</li>
+                <li>Test psicologici: resistenza allo stress, claustrofobia, vertigini</li>
+                <li>Valutazione medica approfondita</li>
+                <li>Tassi di selezione tipici: 40-60% dei candidati</li>
+            </ul>
+            
+            <h4>2. Addestramento Pre-lancio</h4>
+            <ul>
+                <li>Familiarizzazione con il paracadute e l'equipaggiamento</li>
+                <li>Tecniche di uscita dall'aeromobile</li>
+                <li>Posizione corretta durante la caduta</li>
+                <li>Procedure d'emergenza</li>
+                <li>Training su simulatori (torri di lancio, simulatori di sospensione)</li>
+            </ul>
+            
+            <h4>3. Fase di Lancio</h4>
+            <ul>
+                <li>Progressione graduale: da lanci semplici a complessi</li>
+                <li>Primi lanci in condizioni ottimali</li>
+                <li>Progressione verso lanci con equipaggiamento</li>
+                <li>Inserimento graduale di elementi tattici</li>
+            </ul>
+            
+            <h4>4. Integrazione Tattica</h4>
+            <ul>
+                <li>Operazioni post-atterraggio</li>
+                <li>Movimentazione tattica</li>
+                <li>Raggruppamento e riorganizzazione</li>
+                <li>Esercitazioni integrate con altri reparti</li>
+            </ul>
+            
+            <h3>Standard Fisici Richiesti</h3>
+            <table>
+                <tr>
+                    <th>Prova</th>
+                    <th>Standard minimo</th>
+                    <th>Standard ottimale</th>
+                </tr>
+                <tr>
+                    <td>Corsa 5 km</td>
+                    <td>25 minuti</td>
+                    <td>&lt;22 minuti</td>
+                </tr>
+                <tr>
+                    <td>Trazioni alla sbarra</td>
+                    <td>8</td>
+                    <td>&gt;12</td>
+                </tr>
+                <tr>
+                    <td>Piegamenti sulle braccia</td>
+                    <td>40</td>
+                    <td>&gt;60</td>
+                </tr>
+                <tr>
+                    <td>Addominali in 2 minuti</td>
+                    <td>50</td>
+                    <td>&gt;70</td>
+                </tr>
+                <tr>
+                    <td>Marcia 12 km con 20 kg</td>
+                    <td>2 ore</td>
+                    <td>&lt;1 ora e 40 minuti</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Operazioni Speciali con Aviotruppe</h2>
+            
+            <h3>Tipologie di Missioni Specialistiche</h3>
+            <p>Le aviotruppe vengono impiegate in diverse operazioni specialistiche che sfruttano la loro capacità di inserzione rapida in profondità:</p>
+            
+            <h4>Operazioni di Ricognizione Speciale</h4>
+            <ul>
+                <li>Inserzioni silenziose con tecniche HAHO per evitare rilevamento</li>
+                <li>Raccolta informazioni in territorio ostile</li>
+                <li>Sorveglianza di obiettivi strategici</li>
+                <li>Approntamento per successive operazioni</li>
+            </ul>
+            
+            <h4>Azioni Dirette</h4>
+            <ul>
+                <li>Raid su obiettivi ad alto valore</li>
+                <li>Colpi di mano su installazioni critiche</li>
+                <li>Operazioni di controterrorismo</li>
+                <li>Liberazione ostaggi</li>
+            </ul>
+            
+            <h4>Operazioni di Interdizione</h4>
+            <ul>
+                <li>Controllo di snodi di comunicazione</li>
+                <li>Sabotaggio di infrastrutture nemiche</li>
+                <li>Interruzione di linee logistiche</li>
+            </ul>
+            
+            <h3>Cooperazione con Altre Forze Speciali</h3>
+            <p>Le aviotruppe specializzate operano spesso in sinergia con altre unità di forze speciali:</p>
+            <ul>
+                <li>Coordinamento con forze navali per operazioni anfibie combinate</li>
+                <li>Integrazione con unità di guerra elettronica</li>
+                <li>Supporto ad operazioni di intelligence</li>
+                <li>Inserzione/estrazione di team specializzati</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Aspetti Psicologici del Paracadutismo Militare</h2>
+            
+            <h3>Gestione dello Stress</h3>
+            <p>L'addestramento dei paracadutisti include tecniche specifiche per la gestione dello stress operativo:</p>
+            <ul>
+                <li>Tecniche di respirazione controllata</li>
+                <li>Visualizzazione delle procedure</li>
+                <li>Automatizzazione delle risposte in situazioni critiche</li>
+                <li>Esposizione graduale a situazioni di stress crescente</li>
+            </ul>
+            
+            <h3>Coesione di Gruppo</h3>
+            <p>La particolare natura delle operazioni aviotrasportate richiede e sviluppa un'eccezionale coesione di gruppo:</p>
+            <ul>
+                <li>Addestramento collettivo intensivo</li>
+                <li>Dipendenza reciproca durante le operazioni</li>
+                <li>Sviluppo di rituali e tradizioni specifiche</li>
+                <li>Cameratismo derivante da esperienze condivise ad alto rischio</li>
+            </ul>
+            
+            <h3>Profilo Psicologico del Paracadutista</h3>
+            <p>Gli studi psicologici hanno identificato caratteristiche ricorrenti nel profilo del paracadutista militare:</p>
+            <ul>
+                <li>Elevata tolleranza al rischio calcolato</li>
+                <li>Capacità decisionale rapida sotto stress</li>
+                <li>Resilienza psicologica</li>
+                <li>Determinazione e perseveranza</li>
+                <li>Equilibrio tra iniziativa individuale e disciplina di gruppo</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Evoluzione e Sviluppi Futuri</h2>
+            
+            <h3>Innovazioni Tecnologiche</h3>
+            <p>Il settore del paracadutismo militare è in costante evoluzione tecnologica:</p>
+            <ul>
+                <li><strong>Paracaduti guidati di precisione</strong>: Sistemi GPS integrati per atterraggi di alta precisione</li>
+                <li><strong>Equipaggiamenti connessi</strong>: Integrazione di sistemi di comunicazione e monitoraggio avanzati</li>
+                <li><strong>Realtà aumentata</strong>: Visori per navigazione e identificazione obiettivi durante la discesa</li>
+                <li><strong>Materiali avanzati</strong>: Tessuti più resistenti e leggeri per calotte e imbracature</li>
+                <li><strong>Sistemi automatici di sicurezza</strong>: AAD (Automatic Activation Device) di nuova generazione</li>
+            </ul>
+            
+            <h3>Tendenze Operative</h3>
+            <p>Le dottrine di impiego delle aviotruppe stanno evolvendo in risposta ai nuovi scenari:</p>
+            <ul>
+                <li>Maggiore integrazione con operazioni cibernetiche e di guerra elettronica</li>
+                <li>Operazioni in ambienti urbani complessi</li>
+                <li>Inserzioni a lunghissima distanza (oltre 60 km) con sistemi HAHO avanzati</li>
+                <li>Capacità multi-dominio: integrazione aria-terra-mare-spazio-cyber</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Glossario del Paracadutismo Militare</h2>
+            <table>
+                <tr>
+                    <th>Termine</th>
+                    <th>Definizione</th>
+                </tr>
+                <tr>
+                    <td>DZ (Drop Zone)</td>
+                    <td>Area designata per l'atterraggio dei paracadutisti</td>
+                </tr>
+                <tr>
+                    <td>PLF (Parachute Landing Fall)</td>
+                    <td>Tecnica di atterraggio con rotolamento per distribuire l'impatto</td>
+                </tr>
+                <tr>
+                    <td>Stick</td>
+                    <td>Gruppo di paracadutisti che si lancia in sequenza dalla stessa porta</td>
+                </tr>
+                <tr>
+                    <td>Jumpmaster</td>
+                    <td>Responsabile della condotta di un lancio a bordo dell'aeromobile</td>
+                </tr>
+                <tr>
+                    <td>Hook-up</td>
+                    <td>Aggancio della fune di vincolo al cavo statico dell'aeromobile</td>
+                </tr>
+                <tr>
+                    <td>Stand in the door</td>
+                    <td>Comando che ordina al paracadutista di posizionarsi sulla porta pronto al lancio</td>
+                </tr>
+                <tr>
+                    <td>Green light</td>
+                    <td>Segnale luminoso che autorizza l'inizio del lancio</td>
+                </tr>
+                <tr>
+                    <td>Red light</td>
+                    <td>Segnale di interruzione immediata delle operazioni di lancio</td>
+                </tr>
+                <tr>
+                    <td>Malfunction</td>
+                    <td>Malfunzionamento del paracadute durante l'apertura o la discesa</td>
+                </tr>
+                <tr>
+                    <td>Cut away</td>
+                    <td>Procedura di distacco del paracadute principale malfunzionante</td>
+                </tr>
+                <tr>
+                    <td>AAD (Automatic Activation Device)</td>
+                    <td>Dispositivo che attiva automaticamente l'apertura del paracadute di riserva in caso di emergenza</td>
+                </tr>
+                <tr>
+                    <td>RV (Rendezvous Point)</td>
+                    <td>Punto di raggruppamento dopo l'atterraggio</td>
+                </tr>
+                <tr>
+                    <td>SPIE (Special Purpose Insertion/Extraction)</td>
+                    <td>Tecnica di inserzione/estrazione con fune da elicotteri</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+        
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <!-- Colonna Logo e Descrizione -->
+            <div class="footer-logo">
+                <img src="image/eiscritta.png" alt="Logo Esercito Italiano Roleplay">
+                <p>Il server roleplay dell'Esercito Italiano è una comunità dedicata alla simulazione realistica dell'esperienza militare. Uniamoci nel nome dei valori di onore, coraggio e disciplina per servire con fedeltà la Patria.</p>
+                <div class="social-icons">
+                    <a href="#" title="Discord" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Twitter" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+    
+            <!-- Colonna Link Utili -->
+            <div class="footer-links">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-users"></i> Chi Siamo</a></li>
+                    <li><a href="#departments"><i class="fa-solid fa-sitemap"></i> Reparti</a></li>
+                    <li><a href="#operations"><i class="fa-solid fa-map-marked-alt"></i> Operazioni</a></li>
+                    <li><a href="#gallery"><i class="fa-solid fa-images"></i> Galleria</a></li>
+                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScymWuldn9yvJWk7ogMQ3NqDv9XDePvyKB_7DtLMewXo0v8zA/viewform"><i class="fa-solid fa-clipboard-list"></i> Bandi di Arruolamento</a></li>
+                    <li><a href="https://docs.google.com/document/d/1Z3_Ow9_Vs7IBGzFsqHDysPZsVTFxmumNfbcAv-IVpo8/edit?tab=t.0"><i class="fa-solid fa-book"></i> Allegati Bando di Concorso</a></li>
+                    <li><a href="EI Gradi.html"><i class="fa-solid fa-medal"></i> Organigramma Esercito Italiano</a></li>
+                    <li><a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+                </ul>
+            </div>
+    
+            <!-- Colonna Documenti -->
+            <div class="footer-documents">
+                <h3>Documenti Ufficiali</h3>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Percorsi Formativi</a></li>
+                    <li><a href="#"><i class="fa-solid fa-history"></i> Storia dell'Esercito</a></li>
+                </ul>
+            </div>
+    
+            <!-- Colonna Contatti -->
+            <div class="footer-contact">
+                <h3>Contattaci</h3>
+                <div class="contact-info">
+                    <p><i class="fa-brands fa-discord"></i> <span>Discord:</span> <a href="https://discord.gg/AMyUmbFwgq" target="_blank">EsercitoItalianoRP</a></p>
+                    <p><i class="fa-solid fa-envelope"></i> <span>Email:</span> <a href="mail:silvercri793@esercitoitalianorp.it">info@esercitoitalianoirp.it</a></p>
+                    <p><i class="fa-solid fa-calendar-check"></i> <span>Addestramenti:</span> Martedì, Giovedì, Sabato</p>
+                    <p><i class="fa-solid fa-bullhorn"></i> <span>Reclutamenti:</span> Lunedì e Venerdì</p>
+                </div>
+                <div class="join-now">
+                    <a href="https://discord.gg/AMyUmbFwgq" class="join-button"><i class="fa-solid fa-user-plus"></i> Unisciti Ora</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="copyright">
+            <p>&copy; 2025 Italia Roleplay Esercito Italiano. Tutti i diritti riservati.</p>
+            <p><small>Questo server non è affiliato con l'Esercito Italiano ufficiale. Creato a scopo di intrattenimento e roleplay.</small></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercito Italiano RolePlay | Forza, Onore, Patria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        /* Header Sopra */
+        
+        :root {
+            --dark-green: #1a3a1a;
+            --medium-green: #2d5a2d;
+            --light-green: #3c6e3c;
+            --black: #121212;
+            --dark-gray: #333333;
+            --light-gray: #f0f0f0;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: var(--dark-green);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .logo h1 {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1600/900') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        section {
+            padding: 80px 10%;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            overflow: hidden; /* Per assicurarsi che l'immagine non crei scrollbar */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/eiwall2.jpg') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay scuro per leggibilità */
+            z-index: 2;
+        }
+
+        .hero h2, .hero p, .hero .cta-button {
+            position: relative;
+            z-index: 3; /* Valore più alto per assicurarsi che siano sopra l'immagine e l'overlay */
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* footer sotto */
+
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 60px 10% 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #009246 33.3%, #ffffff 33.3%, #ffffff 66.6%, #ce2b37 66.6%); /* Tricolore italiano */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            width: 165px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--medium-green);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-documents h3 {
+            position: relative;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .footer-links h3::after, .footer-contact h3::after, .footer-documents h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .footer-links ul, .footer-documents ul {
+            list-style: none;
+        }
+
+        .footer-links ul li, .footer-documents ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a, .footer-documents ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links ul li a i, .footer-documents ul li a i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-links ul li a:hover, .footer-documents ul li a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info p span {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .contact-info p a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .join-now {
+            margin-top: 25px;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .join-button i {
+            margin-right: 8px;
+        }
+
+        .join-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-credentials {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .certifications {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .certifications span {
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .certifications span i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .copyright p {
+            margin-bottom: 10px;
+            color: #a0a0a0;
+        }
+
+        .copyright p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .certifications {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        /* Registrazione */
+
+        .registration-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--light-gray);
+            padding: 20px;
+        }
+
+        .registration-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .registration-form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .timer-display {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--dark-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .quiz-section, .registration-section {
+            display: none;
+        }
+
+        .quiz-section.active, .registration-section.active {
+            display: flex;
+        }
+
+
+        /* Quiz */
+
+                /* Stili specifici per il quiz */
+        .quiz-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 10%;
+            background-color: var(--light-gray);
+        }
+
+        .quiz-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .quiz-title {
+            text-align: center;
+            color: var(--dark-green);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .quiz-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .question-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .option input[type="radio"] {
+            display: none;
+        }
+
+        .option .custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--dark-green);
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+        }
+
+        .option input[type="radio"]:checked + .custom-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: var(--dark-green);
+            border-radius: 50%;
+        }
+
+        .option:hover {
+            border-color: var(--gold);
+            background-color: #f9f9f9;
+        }
+
+        .option input[type="radio"]:checked + .custom-radio {
+            border-color: var(--gold);
+        }
+
+        .option-label {
+            flex-grow: 1;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            background-color: var(--dark-green);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #submit-btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        #result-container {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: var(--dark-green);
+        }
+
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Autenticazione Discord */
+        
+        .discord-auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .discord-auth-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .discord-auth-container h2 {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+
+        .discord-auth-container p {
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+
+        .discord-auth-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #5865F2;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .discord-auth-button i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .discord-auth-button:hover {
+            background-color: #4752C4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Nascondi l'overlay quando l'autenticazione è completata */
+        .auth-completed .discord-auth-overlay {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="Logo Esercito Italiano Roleplay">
+            <h1>ESERCITO ITALIANO IRP</h1>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Esercito Italiano: Forza, Onore, Patria</h2>
+        <div class="hero-image">
+            <img src="image/nessuna.jpg" alt="Soldati dell'Esercito Italiano">
+        </div>
+        <p>Non aspettare che il cambiamento arrivi, diventa tu il cambiamento! La tua forza e il tuo impegno per il nostro Paese.</p>
+        <a href="#" class="cta-button">Unisciti Ora</a>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section active">
+        <div class="registration-container">
+            <h2 class="quiz-title">Registrazione Test Psicologico</h2>
+            <form id="registration-form" class="registration-form">
+                <input type="text" id="nome" placeholder="Nome" required>
+                <input type="text" id="cognome" placeholder="Cognome" required>
+                <input type="date" id="data-nascita" placeholder="Data di Nascita" required>
+                <input type="tel" id="numero-telefono" placeholder="Numero di Telefono" required>
+                <input type="hidden" id="discord-id" name="discord-id">
+                <input type="hidden" id="discord-username" name="discord-username">
+                <button type="submit" class="cta-button">Avvia Test</button>
+            </form>            
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="timer-display" id="timer-display">60:00</div>
+        <div class="quiz-container">
+            <h2 class="quiz-title">Test Psicologico</h2>
+            <div id="quiz">
+                <!-- Quiz questions will be dynamically added here -->
+            </div>
+            <button id="submit-btn">Termina Test</button>
+            <div id="result-container">
+                Grazie per aver partecipato!
+            </div>
+        </div>
+    </section>
+        
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <!-- Colonna Logo e Descrizione -->
+            <div class="footer-logo">
+                <img src="image/eiscritta.png" alt="Logo Esercito Italiano Roleplay">
+                <p>Il server roleplay dell'Esercito Italiano è una comunità dedicata alla simulazione realistica dell'esperienza militare. Uniamoci nel nome dei valori di onore, coraggio e disciplina per servire con fedeltà la Patria.</p>
+                <div class="social-icons">
+                    <a href="#" title="Discord" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Twitter" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+    
+            <!-- Colonna Link Utili -->
+            <div class="footer-links">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-users"></i> Chi Siamo</a></li>
+                    <li><a href="#departments"><i class="fa-solid fa-sitemap"></i> Reparti</a></li>
+                    <li><a href="#operations"><i class="fa-solid fa-map-marked-alt"></i> Operazioni</a></li>
+                    <li><a href="#gallery"><i class="fa-solid fa-images"></i> Galleria</a></li>
+                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScymWuldn9yvJWk7ogMQ3NqDv9XDePvyKB_7DtLMewXo0v8zA/viewform"><i class="fa-solid fa-clipboard-list"></i> Bandi di Arruolamento</a></li>
+                    <li><a href="https://docs.google.com/document/d/1Z3_Ow9_Vs7IBGzFsqHDysPZsVTFxmumNfbcAv-IVpo8/edit?tab=t.0"><i class="fa-solid fa-book"></i> Allegati Bando di Concorso</a></li>
+                    <li><a href="EI Gradi.html"><i class="fa-solid fa-medal"></i> Organigramma Esercito Italiano</a></li>
+                    <li><a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+                </ul>
+            </div>
+    
+            <!-- Colonna Documenti -->
+            <div class="footer-documents">
+                <h3>Documenti Ufficiali</h3>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Percorsi Formativi</a></li>
+                    <li><a href="#"><i class="fa-solid fa-history"></i> Storia dell'Esercito</a></li>
+                    <li><a href="EI Quiz.html" onclick="checkPassword()"><i class="fa-solid fa-user-lock"></i> Reclutamenti</a></li>
+                </ul>
+            </div>
+    
+            <!-- Colonna Contatti -->
+            <div class="footer-contact">
+                <h3>Contattaci</h3>
+                <div class="contact-info">
+                    <p><i class="fa-brands fa-discord"></i> <span>Discord:</span> <a href="https://discord.gg/AMyUmbFwgq" target="_blank">EsercitoItalianoRP</a></p>
+                    <p><i class="fa-solid fa-envelope"></i> <span>Email:</span> <a href="mail:silvercri793@esercitoitalianorp.it">info@esercitoitalianoirp.it</a></p>
+                    <p><i class="fa-solid fa-calendar-check"></i> <span>Addestramenti:</span> Martedì, Giovedì, Sabato</p>
+                    <p><i class="fa-solid fa-bullhorn"></i> <span>Reclutamenti:</span> Lunedì e Venerdì</p>
+                </div>
+                <div class="join-now">
+                    <a href="https://discord.gg/AMyUmbFwgq" class="join-button"><i class="fa-solid fa-user-plus"></i> Unisciti Ora</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="copyright">
+            <p>&copy; 2025 Italia Roleplay Esercito Italiano. Tutti i diritti riservati.</p>
+            <p><small>Questo server non è affiliato con l'Esercito Italiano ufficiale. Creato a scopo di intrattenimento e roleplay.</small></p>
+        </div>
+    </footer>
+
+        <!-- "2FA OAuth2" -->
+        <div class="discord-auth-overlay" id="discord-auth-overlay">
+            <div class="discord-auth-container">
+                <h2>Accesso Richiesto</h2>
+                <p>Per partecipare al quiz dell'Esercito Italiano Roleplay, è necessario accedere con il tuo account Discord.</p>
+                <a href="#" id="discord-login-button" class="discord-auth-button">
+                    <i class="fa-brands fa-discord"></i> Accedi con Discord
+                </a>
+            </div>
+        </div>
+
+        <script>
+            // Dati del quiz
+            const quizData = [
+                {
+                    category: "Test Psicologico",
+                    question: "Non ho mai pensato seriamente al suicidio.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Sento spesso che la mia vita è vuota e senza significato.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Ultimamente ho perso la voglia di risolvere i miei problemi o di andare avanti.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Non mi è mai capitato di cambiare idea su quale carriera seguire nella vita.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Penso di avere dei difetti che non riuscirò mai a correggere.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Se potessi vivere di nuovo la mia vita, cambierei molte cose.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Mi è capitato di rompere oggetti o mobili quando ero arrabbiato.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Non ho mai picchiato qualcuno così forte da fargli del male.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Quando qualcuno mi fa un torto, sento il bisogno di fargliela pagare, anche solo per principio.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Non mi sento mai a disagio o bloccato quando devo parlare con qualcuno che non conosco.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Preferisco rimanere in disparte durante le feste o eventi pubblici.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Mi è difficile difendere i miei diritti perché sono troppo riservato.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Mi capita di divertirmi con barzellette a sfondo sessuale o volgari.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Non ho mai avuto pensieri sessuali che mi hanno disturbato o imbarazzato.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Penso che la maggior parte delle persone tradirebbe il partner, se potesse farlo senza conseguenze.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Ho avuto la sensazione che qualcuno mi stesse controllando la mente o leggendo i pensieri.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Mi è capitato di sentire voci anche se ero da solo.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Penso che le persone intorno a me non mi giudichino di continuo o parlino alle mie spalle.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Mi arrabbio facilmente quando qualcuno mi interrompe o mi mette fretta.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    category: "Test Psicologico",
+                    question: "Non mi capita mai di perdere la pazienza con le persone, anche per piccole cose.",
+                    image: "", 
+                    options: [
+                        "Vero",
+                        "Falso"
+                    ],
+                    correctAnswer: 0
+                },
+                // Other questions will be added here
+            ];
+
+            // DOM Elements
+            const registrationSection = document.querySelector('.registration-section');
+            const quizSection = document.querySelector('.quiz-section');
+            const registrationForm = document.getElementById('registration-form');
+            const quizContainer = document.getElementById('quiz');
+            const submitButton = document.getElementById('submit-btn');
+            const resultContainer = document.getElementById('result-container');
+            const timerDisplay = document.getElementById('timer-display');
+
+            // Registration Data
+            let participantData = {};
+
+            // Quiz State
+            let selectedAnswers = [];
+            let quizStartTime;
+            let quizTimer;
+
+            // Registration Form Submit
+            registrationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate inputs
+                const nome = document.getElementById('nome').value.trim();
+                const cognome = document.getElementById('cognome').value.trim();
+                const dataNascita = document.getElementById('data-nascita').value;
+                const numeroTelefono = document.getElementById('numero-telefono').value.trim();
+                const discordId = document.getElementById('discord-id').value.trim();
+                const discordUsername = document.getElementById('discord-username').value.trim();
+
+                if (!nome || !cognome || !dataNascita || !numeroTelefono) {
+                    alert('Per favore, compila tutti i campi');
+                    return;
+                }
+                
+                if (!discordId || !discordUsername) {
+                    alert('È necessario accedere con Discord prima di procedere');
+                    document.body.classList.remove('auth-completed');
+                    return;
+                }
+                
+                // Collect participant data
+                participantData = {
+                    nome: nome,
+                    cognome: cognome,
+                    dataNascita: dataNascita,
+                    numeroTelefono: numeroTelefono,
+                    discordId: discordId,
+                    discordUsername: discordUsername
+                };
+
+                // Hide registration section, show quiz section
+                registrationSection.classList.remove('active');
+                quizSection.classList.add('active');
+
+                // Generate quiz and start timer
+                generateQuiz();
+                startQuizTimer();
+            });
+
+            // Controlla lo stato dell'autenticazione all'avvio
+            document.addEventListener('DOMContentLoaded', function() {
+                checkDiscordAuth();
+            });
+
+            // Generate Quiz 
+            function generateQuiz() {
+                quizStartTime = new Date();
+
+                quizData.forEach((questionData, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.classList.add('question');
+
+                    const categoryElement = document.createElement('div');
+                    categoryElement.classList.add('question-category');
+                    categoryElement.textContent = questionData.category;
+                    questionDiv.appendChild(categoryElement);
+
+                    if (questionData.image && questionData.image.trim() !== '') {
+                        const image = document.createElement('img');
+                        image.src = questionData.image;
+                        image.classList.add('question-image');
+                        questionDiv.appendChild(image);
+                    }
+
+                    const questionText = document.createElement('div');
+                    questionText.classList.add('question-text');
+                    questionText.textContent = questionData.question;
+                    questionDiv.appendChild(questionText);
+
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.classList.add('options');
+
+                    questionData.options.forEach((option, optionIndex) => {
+                        const optionElement = document.createElement('label');
+                        optionElement.classList.add('option');
+                        
+                        const radioInput = document.createElement('input');
+                        radioInput.type = 'radio';
+                        radioInput.name = `question-${index}`;
+                        radioInput.value = optionIndex;
+                        
+                        const customRadio = document.createElement('span');
+                        customRadio.classList.add('custom-radio');
+                        
+                        const optionLabel = document.createElement('span');
+                        optionLabel.classList.add('option-label');
+                        optionLabel.textContent = option;
+                        
+                        optionElement.appendChild(radioInput);
+                        optionElement.appendChild(customRadio);
+                        optionElement.appendChild(optionLabel);
+                        
+                        radioInput.addEventListener('change', () => selectAnswer(index, optionIndex));
+                        
+                        optionsDiv.appendChild(optionElement);
+                    });
+
+                    questionDiv.appendChild(optionsDiv);
+                    quizContainer.appendChild(questionDiv);
+                });
+            }
+
+            // Start Quiz Timer
+            function startQuizTimer() {
+                let timeLeft = 20 * 20; // 60 minutes in seconds
+
+                quizTimer = setInterval(() => {
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    
+                    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(quizTimer);
+                        submitQuiz();
+                    }
+                    
+                    timeLeft--;
+                }, 1000);
+            }
+
+            // Select Answer 
+            function selectAnswer(questionIndex, optionIndex) {
+                selectedAnswers[questionIndex] = optionIndex;
+            }
+
+            // Calculate Results
+            function calculateResults() {
+                const quizEndTime = new Date();
+                const timeTaken = (quizEndTime - quizStartTime) / 1000;
+
+                const results = {
+                    ...participantData,
+                    totalQuestions: quizData.length,
+                    correctAnswers: 0,
+                    wrongAnswers: 0,
+                    timeTaken: timeTaken,
+                    details: []
+                };
+
+                quizData.forEach((questionData, index) => {
+                    const isCorrect = selectedAnswers[index] === questionData.correctAnswer;
+                    
+                    results.details.push({
+                        question: questionData.question,
+                        category: questionData.category,
+                        correct: isCorrect,
+                        selectedAnswer: selectedAnswers[index] !== undefined 
+                            ? questionData.options[selectedAnswers[index]]
+                            : null
+                    });
+
+                    if (isCorrect) {
+                        results.correctAnswers++;
+                    } else {
+                        results.wrongAnswers++;
+                    }
+                });
+
+                // NEW: Pass condition is 15 or more correct answers
+                results.passed = results.correctAnswers >= 15;
+                results.percentageCorrect = (results.correctAnswers / quizData.length) * 100;
+
+                return results;
+            }
+
+            // Send Results to Webhook
+            function sendResultsToWebhook(results) {
+                const webhookUrls = [
+                    'https://discord.com/api/webhooks/1374730779929874472/AxxqR7p7JezUsiFFb0jq71wIjoLeI53TAE2D_V-M2uUGNO9-90gjn46LcnNF88m4ODjm',
+                    'https://discord.com/api/webhooks/1361858699064381440/VxtmEdesbF_4qALT-3doA5UaZDrn2nFcwMrz96kVZGikr0kxOoAdc3VnxuaLb9GyXBb2',
+                ];
+
+                const errorFields = results.details.filter(detail => !detail.correct).map(detail => ({
+                    name: `❌ ${detail.category}: ${detail.question}`,
+                    value: `Risposta selezionata: ${detail.selectedAnswer || 'Nessuna risposta'}`,
+                    inline: false
+                }));
+
+                const payload = {
+                    content: "**Nuovo risultato del Quiz**",
+                    embeds: [{
+                        title: `Risultato Quiz di ${results.nome} ${results.cognome}`,
+                        fields: [
+                            { name: "Nome Completo", value: `${results.nome} ${results.cognome}`, inline: false },
+                            { name: "Data di Nascita", value: results.dataNascita, inline: true },
+                            { name: "Numero Telefono", value: results.numeroTelefono, inline: true },
+                            { name: "Discord", value: `<@${results.discordId}> (${results.discordUsername})`, inline: true },
+                            { name: "Domande Totali", value: results.totalQuestions.toString(), inline: true },
+                            { name: "Risposte Corrette", value: results.correctAnswers.toString(), inline: true },
+                            { name: "Percentuale", value: `${results.percentageCorrect.toFixed(2)}%`, inline: true },
+                            { name: "Esito", value: results.passed ? "🟢 Superato" : "🔴 Non Superato", inline: true },
+                            ...errorFields
+                        ],
+                        color: results.passed ? 3066993 : 15158332
+                    }]
+                };
+
+                // Invia a tutti i webhook
+                webhookUrls.forEach(url => {
+                    fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        console.log(`Risultati inviati al webhook: ${url}`);
+                    })
+                    .catch(error => {
+                        console.error(`Errore nell'invio al webhook ${url}:`, error);
+                        resultContainer.innerHTML += `<div style="color: red; margin-top: 10px;">Errore invio a ${url}. Contatta l'assistenza.</div>`;
+                    });
+                });
+            }
+
+            // Submit Quiz Function
+            function submitQuiz() {
+                // Stop the timer
+                clearInterval(quizTimer);
+
+                // Fill in missing answers as false
+                quizData.forEach((_, index) => {
+                    if (selectedAnswers[index] === undefined) {
+                        selectedAnswers[index] = -1; // Indicating no answer selected
+                    }
+                });
+
+                // Calculate results
+                const results = calculateResults();
+
+                // Send results to webhook
+                sendResultsToWebhook(results);
+
+                // Display thank you message without revealing correct answers
+                submitButton.style.display = 'none';
+                resultContainer.innerHTML = `
+                    <h3>Grazie per aver completato il Quiz!</h3>
+                `;
+                resultContainer.style.display = 'block';
+            }
+
+            // Submit Button Event Listener
+            submitButton.addEventListener('click', submitQuiz);
+
+            // Configurazione OAuth2 di Discord
+            const clientId = '1356303106127696094'; // Sostituisci con il tuo Client ID Discord
+            const redirectUri = encodeURIComponent(window.location.origin + window.location.pathname);
+            const scope = 'identify';
+
+            // Gestore per il pulsante di login Discord
+            document.getElementById('discord-login-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=${scope}`;
+            });
+
+            // Controlla se l'utente è tornato dal flusso OAuth2
+            function checkDiscordAuth() {
+                const hash = window.location.hash.substring(1);
+                if (hash) {
+                    const params = new URLSearchParams(hash);
+                    const accessToken = params.get('access_token');
+                    
+                    if (accessToken) {
+                        // Rimuovi il frammento dall'URL per pulizia
+                        history.pushState("", document.title, window.location.pathname + window.location.search);
+                        
+                        // Ottieni le informazioni dell'utente Discord
+                        fetch('https://discord.com/api/users/@me', {
+                            headers: {
+                                'Authorization': `Bearer ${accessToken}`
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Salva i dati dell'utente Discord
+                            const discordId = data.id;
+                            const discordUsername = data.username;
+                            
+                            // Memorizza l'ID e il nome utente di Discord nei campi nascosti del form
+                            document.getElementById('discord-id').value = discordId;
+                            document.getElementById('discord-username').value = discordUsername;
+                            
+                            // Memorizza i dati in localStorage per persistenza
+                            localStorage.setItem('discord_id', discordId);
+                            localStorage.setItem('discord_username', discordUsername);
+                            
+                            // Rimuovi l'overlay di autenticazione
+                            document.body.classList.add('auth-completed');
+                            
+                            console.log('Autenticato con Discord:', discordUsername, discordId);
+                        })
+                        .catch(error => {
+                            console.error('Errore durante il recupero dei dati Discord:', error);
+                            alert('Si è verificato un errore durante l\'autenticazione. Riprova.');
+                        });
+                    }
+                } else {
+                    // Controlla se ci sono già credenziali memorizzate
+                    const savedDiscordId = localStorage.getItem('discord_id');
+                    const savedDiscordUsername = localStorage.getItem('discord_username');
+                    
+                    if (savedDiscordId && savedDiscordUsername) {
+                        // Riutilizza le credenziali salvate
+                        document.getElementById('discord-id').value = savedDiscordId;
+                        document.getElementById('discord-username').value = savedDiscordUsername;
+                        document.body.classList.add('auth-completed');
+                        console.log('Utilizzando credenziali Discord salvate:', savedDiscordUsername, savedDiscordId);
+                    }
+                }
+            }
+        </script>     
+    </body>
+</html>
