@@ -1031,14 +1031,6 @@
                             <input type="radio" name="answer" id="option2" value="1">
                             <label for="option2" id="option2-text"></label>
                         </div>
-                        <div class="answer-option">
-                            <input type="radio" name="answer" id="option3" value="2">
-                            <label for="option3" id="option3-text"></label>
-                        </div>
-                        <div class="answer-option">
-                            <input type="radio" name="answer" id="option4" value="3">
-                            <label for="option4" id="option4-text"></label>
-                        </div>
                     </div>
                 </div>
                 
@@ -1138,7 +1130,7 @@
                         "Vero",
                         "Falso"
                     ],
-                    correctAnswer: 0
+                    correctAnswer: 1
                 },
                 {
                     question: "Sento spesso che la mia vita è vuota e senza significato.",
@@ -1381,8 +1373,6 @@
                 // Opzioni di risposta
                 const option1Text = document.getElementById('option1-text');
                 const option2Text = document.getElementById('option2-text');
-                const option3Text = document.getElementById('option3-text');
-                const option4Text = document.getElementById('option4-text');
                 
                 // Bottoni di navigazione
                 const prevButton = document.getElementById('prev-question');
@@ -1536,8 +1526,6 @@
                     // Imposta le opzioni di risposta
                     option1Text.textContent = question.options[0];
                     option2Text.textContent = question.options[1];
-                    option3Text.textContent = question.options[2];
-                    option4Text.textContent = question.options[3];
                     
                     // Aggiorna l'indicatore del numero di domanda corrente
                     currentQuestionElement.textContent = index + 1;
